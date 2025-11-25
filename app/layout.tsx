@@ -17,6 +17,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Whole Foods - Price Reset",
   description: "Quality you trust. Prices you'll love.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export default function RootLayout({

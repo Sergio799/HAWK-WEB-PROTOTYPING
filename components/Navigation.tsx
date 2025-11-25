@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -44,9 +45,9 @@ export default function Navigation() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2"
           >
-            <span className="text-3xl">🥬</span>
+            <span className="text-2xl md:text-3xl">🥬</span>
             <span 
-              className={`text-2xl font-bold tracking-wider ${
+              className={`text-xl md:text-2xl font-bold tracking-wider ${
                 scrolled ? 'text-gray-900' : 'text-white'
               }`}
               style={{ fontFamily: 'var(--font-bebas)' }}
@@ -56,8 +57,24 @@ export default function Navigation() {
           </motion.div>
         </Link>
 
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={`md:hidden p-2 ${
+            scrolled ? 'text-gray-900' : 'text-white'
+          }`}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {mobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
         {/* Navigation Links */}
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <Link href="/products">
             <motion.span
               whileHover={{ scale: 1.05 }}
@@ -175,6 +192,51 @@ export default function Navigation() {
           </Link>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-white border-t-2 border-green-600"
+        >
+          <div className="px-4 py-4 space-y-3">
+            <Link href="/products" onClick={() => setMobileMenuOpen(false)}>
+              <div className="block py-2 text-gray-700 hover:text-green-600 font-semibold">
+                Products
+              </div>
+            </Link>
+            <Link href="/bundles" onClick={() => setMobileMenuOpen(false)}>
+              <div className="block py-2 text-gray-700 hover:text-green-600 font-semibold">
+                Bundles
+              </div>
+            </Link>
+            <Link href="/stores" onClick={() => setMobileMenuOpen(false)}>
+              <div className="block py-2 text-gray-700 hover:text-green-600 font-semibold">
+                Stores
+              </div>
+            </Link>
+            <Link href="/standards" onClick={() => setMobileMenuOpen(false)}>
+              <div className="block py-2 text-gray-700 hover:text-green-600 font-semibold">
+                Standards
+              </div>
+            </Link>
+            <div className="pt-3 border-t border-gray-200 space-y-2">
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                <button className="w-full py-2 text-gray-700 hover:text-green-600 font-semibold text-left">
+                  Login
+                </button>
+              </Link>
+              <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
+                <button className="w-full py-2 bg-green-600 text-black rounded-full font-semibold hover:bg-green-700 transition-colors">
+                  Sign Up
+                </button>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </nav>
   );
 }

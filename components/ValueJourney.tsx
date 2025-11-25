@@ -59,7 +59,7 @@ export default function ValueJourney() {
         </motion.div>
 
         {/* Modern Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
           {/* Large Card - Spans 2 columns and 2 rows */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

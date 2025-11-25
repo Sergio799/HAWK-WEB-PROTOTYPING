@@ -16,9 +16,9 @@ export default function PriceFlipCard({ name, oldPrice, newPrice, image, savings
 
   return (
     <motion.div 
-      className="relative w-44 h-56 cursor-pointer mx-auto"
+      className="relative w-44 h-56 cursor-pointer mx-auto touch-manipulation"
       onClick={() => setIsFlipped(!isFlipped)}
-      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
     >
       <motion.div

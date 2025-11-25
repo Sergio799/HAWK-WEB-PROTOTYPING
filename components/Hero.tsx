@@ -10,7 +10,9 @@ export default function Hero() {
 
   useEffect(() => {
     const updateRadius = () => {
-      setRadius(Math.min(window.innerWidth, window.innerHeight) * 0.35);
+      const isMobile = window.innerWidth < 768;
+      const multiplier = isMobile ? 0.25 : 0.35;
+      setRadius(Math.min(window.innerWidth, window.innerHeight) * multiplier);
     };
     
     updateRadius();
@@ -22,7 +24,7 @@ export default function Hero() {
       timeoutId = setTimeout(updateRadius, 150);
     };
     
-    window.addEventListener('resize', debouncedResize);
+    window.addEventListener('resize', debouncedResize, { passive: true });
     return () => {
       window.removeEventListener('resize', debouncedResize);
       clearTimeout(timeoutId);
