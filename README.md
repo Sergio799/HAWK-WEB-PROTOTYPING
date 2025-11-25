@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Whole Foods - Price Reset Prototype
+
+An interactive, immersive homepage prototype showcasing Whole Foods' new pricing strategy using Next.js, React Three Fiber, Framer Motion, and Tailwind CSS.
+
+## Features
+
+✨ **3D Hero Section** - Floating produce models with parallax effects
+🔄 **Interactive Price Flip Cards** - Click to reveal before/after pricing
+📜 **Scroll-Based Value Journey** - Smooth animations as you explore
+🎨 **Modern Design** - Green gradient theme with smooth transitions
+
+## Tech Stack
+
+- **Next.js 15** - React framework with App Router
+- **React Three Fiber** - Declarative 3D with Three.js
+- **Framer Motion** - Smooth animations and interactions
+- **Tailwind CSS** - Utility-first styling
+- **TypeScript** - Type safety
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies (already done)
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the prototype.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── page.tsx          # Main homepage
+│   └── globals.css       # Global styles
+├── components/
+│   ├── Hero.tsx          # 3D hero section
+│   ├── FloatingProduce.tsx   # 3D produce models
+│   ├── PriceFlipSection.tsx  # Grid of flip cards
+│   ├── PriceFlipCard.tsx     # Individual flip card
+│   └── ValueJourney.tsx      # Scroll journey section
+```
 
-## Learn More
+## Customization Tips
 
-To learn more about Next.js, take a look at the following resources:
+- **Add more products**: Edit `products` array in `PriceFlipSection.tsx`
+- **Change colors**: Update Tailwind classes (green-600, etc.)
+- **Adjust 3D items**: Modify `FloatingProduce.tsx` positions and colors
+- **Animation timing**: Tweak `transition` props in Framer Motion components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Performance Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 3D canvas is optimized with `OrbitControls` zoom/pan disabled
+- Animations use `whileInView` for performance
+- Lazy loading ready for production
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Good luck with your rapid prototyping competition! 🚀
